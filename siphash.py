@@ -6,6 +6,15 @@ from util import big_to_little8, rotl8
 class SipHash:
 
     # TODO: Change ways to pass parameters in a more object-oriented way.
+    
+    """
+    Implemented following the algorithm in (Aumasson and Bernstein, 2012).
+
+    Aumasson, JP., Bernstein, D.J. (2012). SipHash: A Fast Short-Input PRF.
+    In: Galbraith, S., Nandi, M. (eds) Progress in Cryptology - INDOCRYPT 2012.
+    INDOCRYPT 2012. Lecture Notes in Computer Science, vol 7668.
+    Springer, Berlin, Heidelberg. https://doi.org/10.1007/978-3-642-34931-7_28
+    """
 
     def __init__(self, key: int, message: bytes, c=2, d=4) -> None:
         """
