@@ -6,7 +6,7 @@ from util import big_to_little8, rotl8
 class SipHash:
 
     # TODO: Change ways to pass parameters in a more object-oriented way.
-
+    
     """
     Implemented following the algorithm in (Aumasson and Bernstein, 2012).
 
