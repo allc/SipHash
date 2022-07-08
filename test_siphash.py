@@ -63,6 +63,10 @@ class TestSipHash(unittest.TestCase):
     def test_get_hash(self):
         self.assertEqual(self.siphash.get_hash(), 0xa129ca6149be45e5)
 
+    def test_get_hash_caching(self):
+        self.siphash.get_hash()
+        self.assertEqual(self.siphash.hash, 0xa129ca6149be45e5)
+
     def test_hexdigest(self):
         self.assertEqual(self.siphash.hexdigest(), 'a129ca6149be45e5')
 

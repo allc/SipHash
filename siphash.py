@@ -1,5 +1,4 @@
 from typing import List, Tuple
-import binascii
 from util import big_to_little8, rotl8
 
 
@@ -48,13 +47,12 @@ class SipHash:
         int
             Hash value in little-endian
         """
-        if self.hash is not None:
-            return self.hash
-        
-        k0, k1 = self._encode_key(self.key)
-        internal_state = self._initialise_internal_state(k0, k1)
-        internal_state = self._compress(self.message, internal_state)
-        return self._finalise(internal_state)
+        if self.hash is None:
+            k0, k1 = self._encode_key(self.key)
+            internal_state = self._initialise_internal_state(k0, k1)
+            internal_state = self._compress(self.message, internal_state)
+            self.hash = self._finalise(internal_state)
+        return self.hash
 
     def hexdigest(self) -> str:
         """
